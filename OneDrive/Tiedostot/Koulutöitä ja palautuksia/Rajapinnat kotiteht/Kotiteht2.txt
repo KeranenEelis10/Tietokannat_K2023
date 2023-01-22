@@ -1,0 +1,6 @@
+a) mysql> select distinct owner from pet;
+b) mysql> select name from pet order by name;
+c) mysql> select name from pet where death is null;
+d) mysql> select * from pet where owner like 'H%';
+e) mysql> select * from pet where name like '%ff%';
+f) mysql> select * from pet where name like '____';
