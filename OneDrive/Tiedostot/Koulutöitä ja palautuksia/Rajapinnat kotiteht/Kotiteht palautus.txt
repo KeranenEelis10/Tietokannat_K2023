@@ -1,4 +1,4 @@
 git add .
-git commit -m "Tehtävä1" 
-git remote add origin url(guthubinosote)
+git commit -m "Tiedosto nimi" 
+git remote add url(guthubinosote)
 git push origin main

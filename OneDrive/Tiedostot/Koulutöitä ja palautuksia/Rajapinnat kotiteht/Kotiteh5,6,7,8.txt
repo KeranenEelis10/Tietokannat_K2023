@@ -1,0 +1,50 @@
+5.
+a) mysql> show databases; -> use employees; -> show tables; -> select * from departments;
+b) mysql> select distinct title from titles;
+c) mysql> select min(salary) from salaries;
+   mysql> select max(salary) from salaries;
+d) mysql> select avg(salary) from salaries;
+e) mysql> select * from employees where last_name='Facello';
+f) mysql> select * from employees where birth_date >='1950-01-01' and birth_date <='1959-12-31';
+g) mysql> select count(gender) from employees where gender='F';
+   mysql> select count(gender) from employees where gender='M';
+
+6.
+mysql> create table owner ( first_name varchar(200), last_name varchar (200), address varchar (200), ownerID int primary key AUTO_INCREMENT);
+mysql> alter table pet drop column owner;
+mysql> alter table pet add column petID int primary key AUTO_INCREMENT;
+mysql> alter table pet add column ownerID int;
+mysql> alter table pet add constraint foreign key(ownerID) references owner(ownerID);
+mysql> insert into owner values ('Harold','Lloyd','Someaddress1',NULL);
+mysql> insert into owner values ('Gwen','Stefani','Someaddress2',NULL);
+mysql> insert into owner values ('Benny','Hill','Someaddress3',NULL);
+mysql> insert into owner values ('Diane','Keaton','Someaddress4',NULL);
+mysql> update pet set ownerID=1 where name='Fluffy';
+mysql> update pet set ownerID=3 where name='Claws';
+mysql> update pet set ownerID=1 where name='Buffy';
+mysql> update pet set ownerID=4 where name='Fang';
+mysql> update pet set ownerID=2 where name='Bowser';
+mysql> update pet set ownerID=3 where name='Chirpy' or name='Whistler';
+mysql> update pet set ownerID=4 where name='Slim';
+
+7.
+a) mysql> select * from employees order by last_name limit 10;
+b) mysql> select * from employees order by last_name, first_name limit 10;
+c) mysql> select * from employees order by hire_date desc limit 5;
+d) mysql> select * from employees join salaries on employees.emp_no=salaries.emp_no order by salary desc limit 1;
+e) mysql> select * from employees join salaries on employees.emp_no=salaries.emp_no order by salary limit 1;
+f) mysql> select * from employees join salaries on employees.emp_no=salaries.emp_no where salary>150000;
+g) mysql> select dept_name, count(*) as Lukumaara from departments join dept_emp on departments.dept_no=dept_emp.dept_no 
+join employees on employees.emp_no=dept_emp.emp_no group by dept_name;
+h) mysql> select * from employees join dept_manager on employees.emp_no=dept_manager.emp_no join departments on departments.dept_no=dept_manager.dept_no;
+i) mysql> select dept_name, avg(salary) from employees join salaries on employees.emp_no=salaries.emp_no join current_dept_emp on 
+employees.emp_no=current_dept_emp.emp_no join departments on current_dept_emp.dept_no=departments.dept_no group by dept_name;
+
+8.
+a) mysql> select * from language order by name;
+b) mysql> select * from actor_info where last_name='Temple';
+c) mysql> select first_name, last_name from actor join film_actor on actor.actor_id=film_actor.actor_id join film on film_actor.film_id=film.film_id 
+where title='Ghost Groundhog';
+d) mysql> select name, count(*) from film_category join category on film_category.category_id=category.category_id group by name;
+e) mysql>  select title from film_category join category on film_category.category_id=category.category_id join film on film_category.film_id=film.film_id
+ where name='Horror';
